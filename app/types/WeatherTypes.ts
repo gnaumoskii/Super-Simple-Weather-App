@@ -1,4 +1,5 @@
 export type Weather = {
+    id: number,
     temperatureMin: number;
     temperatureMax: number;
     sunset: string;

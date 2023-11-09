@@ -7,8 +7,8 @@ type WeatherCodeMap = {
 const weatherCodeMapper: WeatherCodeMap = {
     0: "Sunny",
     1: "Sunny",
-    2: "Partly Cloudy",
-    3: "Mostly Cloudy",
+    2: "Slightly Cloudy",
+    3: "Cloudy",
     45: "Slightly Foggy",
     48: "Foggy",
     51: "Drizzly",
@@ -36,10 +36,46 @@ export const mapWeatherCode = (code: number): string => {
     return weatherCodeMapper[code];
 }
 
+export const getWeatherColor = (weatherCode: number) => {
+  const weatherCodeDescription = mapWeatherCode(weatherCode);
+  if(weatherCodeDescription.toLowerCase() === "sunny") {
+    return "text-yellow-400"
+  } else
+  if(weatherCodeDescription.toLowerCase() === "rainy") {
+    return "text-slate-500"
+  } else
+  if(weatherCodeDescription.toLowerCase() === "very rainy") {
+    return "text-slate-600"
+  } else
+  if(weatherCodeDescription.toLowerCase() === "extremely rainy") {
+    return "text-slate-700"
+  } else
+  if(weatherCodeDescription.toLowerCase() === "cloudy" || weatherCodeDescription.toLowerCase() === "slightly cloudy") {
+    return "text-gray-300"
+  } else
+  if(weatherCodeDescription.toLowerCase() === "snowy" || weatherCodeDescription.toLowerCase() === "very snowy" || weatherCodeDescription.toLowerCase() === "slightly snowy") {
+    return "text-slate-200"
+  } else
+  if(weatherCodeDescription.toLowerCase() === "extremely snowy") {
+    return "text-slate-300"
+  } else
+  if(weatherCodeDescription.toLowerCase() === "drizzly") {
+    return "text-slate-300"
+  } else
+  if(weatherCodeDescription.toLowerCase() === "foggy" || weatherCodeDescription.toLowerCase() === "slightly foggy") {
+    return "text-gray-200"
+  } else
+  if(weatherCodeDescription.toLowerCase() === "thunderstorm" || weatherCodeDescription.toLowerCase() === "thunderstorm with hail" || weatherCodeDescription.toLowerCase() === "thunderstorm with heavy hail") {
+    return "text-red-800"
+  }
+  return "text-white";
+}
+
 export const convertWeatherData = (weatherData: WeatherRawData) => {
     const weeklyWeather: Weather[] = [];
     for(let i=0;i < 7; i++) {
       const weatherObj: Weather = {
+        id: i,
         temperatureMax: weatherData.temperature_2m_max[i],
         temperatureMin: weatherData.temperature_2m_min[i],
         sunrise: weatherData.sunrise[i],

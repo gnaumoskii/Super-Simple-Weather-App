@@ -1,0 +1,26 @@
+.weather-text {
+    display: inline-block;
+    font-size: 48px;
+
+}
+
+@for $i from 1 to 5 {
+    .weather-text {
+        &:nth-of-type(#{$i}) {
+            animation: fade-down 0.6s ease-out backwards;
+            animation-delay: $i * 0.4s;
+        }
+    }
+}
+
+@keyframes fade-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-32px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}

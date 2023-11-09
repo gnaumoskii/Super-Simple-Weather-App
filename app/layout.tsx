@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat, Open_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
+const openSans = Open_Sans({ subsets: ["latin"] });
+const roboto = Roboto({ subsets: ["latin"], weight: ["900", "700", "500"]});
 
 export const metadata: Metadata = {
     title: "Super Simple Weather App",
@@ -11,16 +14,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en">
-            <body className={inter.className}>
-                <ul>
-                    <li>
-                        <Link href="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link href="/about">About Us</Link>
-                    </li>
-                </ul>
+        <html lang="en" className="!scroll-smooth">
+            <body className={montserrat.className}>
                 {children}
             </body>
         </html>
