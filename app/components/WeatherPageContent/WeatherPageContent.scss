@@ -1,26 +1,25 @@
+@import "../../theme/animations";
+
 .weather-text {
     display: inline-block;
     font-size: 48px;
-
+    &:last-of-type {
+        animation: fade-down 0.7s ease-out backwards;
+        animation-delay: 1.75s;
+    }
 }
 
-@for $i from 1 to 5 {
+@for $i from 1 to 4 {
     .weather-text {
         &:nth-of-type(#{$i}) {
-            animation: fade-down 0.6s ease-out backwards;
-            animation-delay: $i * 0.4s;
+            animation: fade-down 0.7s ease-out backwards;
+            animation-delay: $i * 0.35s;
         }
     }
 }
 
-@keyframes fade-down {
-    0% {
-        opacity: 0;
-        transform: translateY(-32px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
+.weather-card {
+    animation: fade-down 0.7s ease-out backwards 2.45s;
 }
+
+

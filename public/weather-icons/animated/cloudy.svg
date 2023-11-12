@@ -25,24 +25,24 @@
 */
 @keyframes am-weather-cloud-1 {
   0% {
-    -webkit-transform: translate(-5px,0px);
-       -moz-transform: translate(-5px,0px);
-        -ms-transform: translate(-5px,0px);
-            transform: translate(-5px,0px);
+    -webkit-transform: translate(-3px,0px);
+       -moz-transform: translate(-3px,0px);
+        -ms-transform: translate(-3px,0px);
+            transform: translate(-3px,0px);
   }
 
   50% {
-    -webkit-transform: translate(10px,0px);
-       -moz-transform: translate(10px,0px);
-        -ms-transform: translate(10px,0px);
-            transform: translate(10px,0px);
+    -webkit-transform: translate(6px,0px);
+       -moz-transform: translate(6px,0px);
+        -ms-transform: translate(6px,0px);
+            transform: translate(6px,0px);
   }
 
   100% {
-    -webkit-transform: translate(-5px,0px);
-       -moz-transform: translate(-5px,0px);
-        -ms-transform: translate(-5px,0px);
-            transform: translate(-5px,0px);
+    -webkit-transform: translate(-3px,0px);
+       -moz-transform: translate(-3px,0px);
+        -ms-transform: translate(-3px,0px);
+            transform: translate(-3px,0px);
   }
 }
 

@@ -8,7 +8,7 @@ const queryClient = new QueryClient();
 
 export default function Home() {
   return (
-    <main className="bg-gradient-to-b from-indigo-500 to-sky-200 bg-no-repeat min-h-screen">
+    <main className="bg-slate-900 min-h-screen relative">
       <QueryClientProvider client={queryClient}>
       <WeatherPageContent />
       </QueryClientProvider>
