@@ -1,4 +1,4 @@
-import { Weather, WeatherRawData } from "../types/WeatherTypes";
+import { Weather, WeatherHourlyRawData, WeatherRawData } from "../types/WeatherTypes";
 
 type WeatherCodeMap = {
     [key: number]: string
@@ -32,7 +32,7 @@ const weatherCodeMapper: WeatherCodeMap = {
 }
 
 
-export const mapWeatherCode = (code: number): string => {
+export const mapWeatherCode = (code: number, isNight?: boolean): string => {
     return weatherCodeMapper[code];
 }
 
@@ -63,7 +63,7 @@ export const getWeatherColor = (weatherCode: number) => {
     return "text-slate-300"
   } else
   if(weatherCodeDescription.toLowerCase() === "foggy" || weatherCodeDescription.toLowerCase() === "slightly foggy") {
-    return "text-gray-200"
+    return "text-gray-300"
   } else
   if(weatherCodeDescription.toLowerCase() === "thunderstorm" || weatherCodeDescription.toLowerCase() === "thunderstorm with hail" || weatherCodeDescription.toLowerCase() === "thunderstorm with heavy hail") {
     return "text-red-800"
@@ -71,8 +71,12 @@ export const getWeatherColor = (weatherCode: number) => {
   return "text-white";
 }
 
-export const convertWeatherData = (weatherData: WeatherRawData) => {
+export const convertWeatherData = (weatherData: WeatherRawData, hourlyData: WeatherHourlyRawData) => {
     const weeklyWeather: Weather[] = [];
+    const hourlyDataArr = hourlyData;
+    let hourlyStartOffset = 0;
+    let hourlyEndOffset = 24;
+
     for(let i=0;i < 7; i++) {
       const weatherObj: Weather = {
         id: i,
@@ -81,9 +85,23 @@ export const convertWeatherData = (weatherData: WeatherRawData) => {
         sunrise: weatherData.sunrise[i],
         sunset: weatherData.sunset[i],
         date: new Date(weatherData.time[i]),
-        weatherCode: weatherData.weather_code[i]
+        weatherCode: weatherData.weather_code[i],
+        hourly: []
       };
+
+      const hourlyTemperature = hourlyData.temperature_2m.slice(hourlyStartOffset, hourlyEndOffset);
+      const hourlyWeatherCode = hourlyData.weather_code.slice(hourlyStartOffset, hourlyEndOffset);
+      const hourlyTime = hourlyData.time.slice(hourlyStartOffset, hourlyEndOffset);
+
+      for(let i=0;i<24;i++) {
+        weatherObj.hourly.push({id: i, temperature: hourlyTemperature[i], weatherCode: hourlyWeatherCode[i], time: hourlyTime[i]});
+      }
+
       weeklyWeather.push(weatherObj);
+      hourlyStartOffset+=24;
+      hourlyEndOffset+=24;
     }
+
+    console.log(weeklyWeather);
     return weeklyWeather;
 }

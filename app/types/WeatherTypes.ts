@@ -6,9 +6,16 @@ export type Weather = {
     sunrise: string;
     date: Date;
     weatherCode: number;
-  
+    hourly: HourlyWeather[];
   }
   
+  export type HourlyWeather = {
+    id: number;
+    temperature: number;
+    weatherCode: number;
+    time: string;
+  }
+
   export type WeatherRawData = {
     temperature_2m_min: number[];
     temperature_2m_max: number[];
@@ -17,3 +24,10 @@ export type Weather = {
     time: string[];
     weather_code: number[];
   }
+
+  export type WeatherHourlyRawData = {
+    temperature_2m: number[];
+    time: string[];
+    weather_code: number[];
+  }
+

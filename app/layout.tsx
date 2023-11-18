@@ -17,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en" className="!scroll-smooth">
             <body className={montserrat.className}>
                 {children}
+                <div id="portal"></div>
             </body>
         </html>
     );
