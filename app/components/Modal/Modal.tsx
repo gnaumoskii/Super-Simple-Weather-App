@@ -9,7 +9,6 @@ type ModalProps = {
 }
 
 const Modal = ({ModalContent, closeModal}:ModalProps) => {
-    // TODO: Add general modal animation
   const closeModalHandler = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
    event.stopPropagation();
     if (event.target != event.currentTarget) {

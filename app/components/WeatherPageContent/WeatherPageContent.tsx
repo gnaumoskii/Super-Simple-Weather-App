@@ -20,7 +20,6 @@ const WeatherPageContent = () => {
     const {
         data: weeklyWeather,
         isLoading,
-        isFetched,
     } = useQuery({
         queryKey: ["fetchWeather"],
         queryFn: () => fetchWeather(),
@@ -33,7 +32,6 @@ const WeatherPageContent = () => {
 
     return (
         <div className="relative w-auto h-screen overflow-y-scroll overflow-hidden snap-y snap-mandatory">
-
             <div className="h-screen w-full flex flex-col items-center justify-center overflow-hidden snap-center">
                 <div className="text-center text-5xl font-black uppercase text-slate-200 mt-60">
                     <p>

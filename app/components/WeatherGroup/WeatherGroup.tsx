@@ -1,7 +1,7 @@
 import { Weather } from "@/app/types/WeatherTypes";
 import React, { useRef } from "react";
 import WeatherCard from "../WeatherCard/WeatherCard";
-import { motion, useAnimate, useInView, MotionConfig } from "framer-motion";
+import { motion, useAnimate, useInView } from "framer-motion";
 
 type WeatherGroupProps = {
     weeklyWeather: Weather[];

@@ -1,7 +1,6 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
 import WeatherPageContent from './components/WeatherPageContent/WeatherPageContent';
-import { QueryClientProvider, QueryClient, QueryCache } from '@tanstack/react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 

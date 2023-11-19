@@ -49,7 +49,6 @@ const WeatherHourCard: React.FC<WeatherHourCardProps> = ({ hourlyWeather }) => {
 };
 
 const WeatherDetails = ({ weather }: WeatherDetailsProps) => {
-    // TODO: add all necessary details and styles (plus animations)
     return (
         <div className="">
             <h1 className="mt-6 text-center text-white capitalize text-3xl font-semibold">Weather details</h1>
