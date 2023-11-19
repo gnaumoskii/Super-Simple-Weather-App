@@ -1,4 +1,4 @@
-import { Weather, WeatherHourlyRawData, WeatherRawData } from "../types/WeatherTypes";
+import { HourlyWeather, Weather, WeatherHourlyRawData, WeatherRawData } from "../types/WeatherTypes";
 
 type WeatherCodeMap = {
     [key: number]: string
@@ -97,11 +97,19 @@ export const convertWeatherData = (weatherData: WeatherRawData, hourlyData: Weat
         weatherObj.hourly.push({id: i, temperature: hourlyTemperature[i], weatherCode: hourlyWeatherCode[i], time: hourlyTime[i]});
       }
 
+      weatherObj.weatherCode = getClosestWeatherCode(weatherObj.hourly);
+
       weeklyWeather.push(weatherObj);
       hourlyStartOffset+=24;
       hourlyEndOffset+=24;
     }
-
-    console.log(weeklyWeather);
     return weeklyWeather;
+}
+
+export const getClosestWeatherCode = (hourlyWeather: HourlyWeather[]) => {
+  const weatherCodes = [0,1,2,3,45,48,51,53,55,61,63,65,71,73,75,77,80,81,82,85,86,95,96,99];
+  const averageWeatherCode = hourlyWeather.reduce((sum, value) => sum + value.weatherCode, 0) / hourlyWeather.length
+  const closestWeatherCode = weatherCodes.reduce((a,b) => Math.abs(b-averageWeatherCode) < Math.abs(a-averageWeatherCode) ? b : a)
+  console.log(closestWeatherCode);
+  return closestWeatherCode;
 }
