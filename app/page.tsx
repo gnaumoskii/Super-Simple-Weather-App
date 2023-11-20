@@ -1,9 +1,19 @@
-import Image from 'next/image'
+'use client';
+import WeatherPageContent from './components/WeatherPageContent/WeatherPageContent';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
+
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-    
+    <main className="bg-slate-900 min-h-screen relative overflow-hidden">
+      <div className='z-[10]'>
+        <QueryClientProvider client={queryClient}>
+        <WeatherPageContent />
+        </QueryClientProvider>
+      </div>
+
     </main>
   )
 }
