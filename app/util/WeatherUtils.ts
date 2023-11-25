@@ -39,7 +39,7 @@ export const mapWeatherCode = (code: number, isNight?: boolean): string => {
 export const getWeatherColor = (weatherCode: number) => {
   const weatherCodeDescription = mapWeatherCode(weatherCode);
   if(weatherCodeDescription.toLowerCase() === "sunny") {
-    return "text-yellow-400"
+    return "text-yellow-500"
   } else
   if(weatherCodeDescription.toLowerCase() === "rainy") {
     return "text-slate-500"

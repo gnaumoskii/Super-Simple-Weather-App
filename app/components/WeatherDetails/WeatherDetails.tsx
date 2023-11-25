@@ -50,7 +50,7 @@ const WeatherHourCard: React.FC<WeatherHourCardProps> = ({ hourlyWeather }) => {
 
 const WeatherDetails = ({ weather }: WeatherDetailsProps) => {
     return (
-        <div className="">
+        <div data-test="weather-details">
             <h1 className="mt-6 text-center text-white capitalize text-3xl font-semibold">Weather details</h1>
             <div className="mt-12"
             >
