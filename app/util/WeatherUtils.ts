@@ -103,6 +103,7 @@ export const convertWeatherData = (weatherData: WeatherRawData, hourlyData: Weat
       hourlyStartOffset+=24;
       hourlyEndOffset+=24;
     }
+    console.log(weeklyWeather[0])
     return weeklyWeather;
 }
 
