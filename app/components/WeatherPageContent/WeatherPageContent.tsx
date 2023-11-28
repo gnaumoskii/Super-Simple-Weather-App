@@ -31,7 +31,7 @@ const WeatherPageContent = () => {
     }
 
     return (
-        <div className="relative w-auto h-screen overflow-y-scroll overflow-hidden snap-y snap-mandatory">
+        <div className="relative w-auto h-screen overflow-y-scroll overflow-hidden snap-y snap-mandatory" data-test="weather-content">
             <div className="h-screen w-full flex flex-col items-center justify-center overflow-hidden snap-center">
                 <div className="text-center text-5xl font-black uppercase text-slate-200 mt-60">
                     <p>
@@ -64,6 +64,7 @@ const WeatherPageContent = () => {
                     </motion.span>
                     </p>
                     <motion.p
+                        data-test="weather-text"
                         className={"mt-2 " + (weeklyWeather ? getWeatherColor(weeklyWeather[0].weatherCode) : "text-white")}
                         initial={{ scale: 0.9, opacity: 0, y: 48 }}
                         whileInView={{ scale: 1, opacity: 1, y: 0 }}
@@ -75,6 +76,7 @@ const WeatherPageContent = () => {
                 </div>
                 {weeklyWeather && (
                     <motion.div
+                        data-test="landing-weather-card"
                         initial={{ scale: 1, opacity: 0, y: 32 }}
                         whileInView={{ scale: 1, opacity: 1, y: 0 }}
                         transition={{ delay: 1.3, ease: "backInOut", type: "spring" }}
@@ -90,6 +92,7 @@ const WeatherPageContent = () => {
                     viewport={{once: true}}
                 >
                     <motion.button
+                        data-test="weekly-weather-button"
                         onClick={viewWeeklyWeather}
                         className="text-slate-200 p-3 mt-32 text-lg font-bold flex flex-col justify-center items-center uppercase relative top-12"
                         initial={{opacity: 0.5}}

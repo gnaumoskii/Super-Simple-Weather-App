@@ -1,4 +1,4 @@
-name: E2E and Component Tests
+name: Component Tests
 on: push
 jobs:
   cypress-run:
