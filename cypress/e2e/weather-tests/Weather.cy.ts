@@ -1,8 +1,7 @@
 describe("Weather Tests", () => {
     beforeEach(() => {
-        cy.intercept(
-            "https://api.open-meteo.com/v1/forecast?latitude=41.9463168&longitude=21.5154688&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=auto"
-        ).as("getWeather");
+        cy.visit("http://localhost:3000/")
+        cy.intercept('GET', '**').as("getWeather");
         cy.wait("@getWeather");
     });
 
@@ -13,9 +12,10 @@ describe("Weather Tests", () => {
     });
 
     it("Click button to scroll to Weekly Weather", () => {
-        cy.getDataTest("weekly-weather-button").click({ force: true });
+        cy.getDataTest("weekly-weather-button").click({force: true});
         cy.getDataTest("weather-group").should("be.visible");
         cy.getDataTest("weather-group").find("li").should("have.length", 7);
+
     });
 
     it("Todays Weather data is visible", () => {

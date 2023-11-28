@@ -1,6 +1,13 @@
 import { defineConfig } from "cypress";
+import { cypressBrowserPermissionsPlugin } from 'cypress-browser-permissions';
 
 export default defineConfig({
+  env: {
+    browserPermissions: {
+      notifications: "allow",
+      geolocation: "allow",
+    },
+  },
   component: {
     devServer: {
       framework: "next",
@@ -9,11 +16,15 @@ export default defineConfig({
   },
   
   e2e: {
+    experimentalFetchPolyfill: true,
     viewportHeight: 1080,
     viewportWidth: 1920,
-    baseUrl: "http://localhost:3000",
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      config = cypressBrowserPermissionsPlugin(on, config);
+      config.env.browserPermissions = {
+        geolocation: 'allow',
+      };
+      return config;
     },
-  },
+  }
 });
