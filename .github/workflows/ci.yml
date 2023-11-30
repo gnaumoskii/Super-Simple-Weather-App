@@ -1,12 +1,14 @@
-name: E2E and Component Tests
+name: Cypress Tests
 on: push
 jobs:
-  cypress-run:
+  tests-run:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          component: true
+      - name: Install dependencies
+        run: npm install
+      - name: Start local server
+        run: npm run dev &
+      - name: Run Cypress tests
+        run: npm test

@@ -18,7 +18,7 @@ const WeatherGroup: React.FC<WeatherGroupProps> = ({ weeklyWeather }) => {
     const weatherCardRef = useRef(null);
     const inView = useInView(weatherCardRef, { once: true });
     return (
-        <div className="relative">
+        <div className="relative" data-test="weather-group">
             <motion.p className="text-center text-white uppercase text-2xl font-black"
             initial={{opacity: 0, scale: 0}}
             whileInView={{opacity: 1, scale: 1}}

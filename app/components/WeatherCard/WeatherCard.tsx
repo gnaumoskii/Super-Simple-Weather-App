@@ -29,6 +29,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ weather, className }) => {
         <>
         <motion.div 
             className={"relative bg-[#161f33] p-4 w-[360px] md:w-400 rounded-3xl flex items-center text-white shadow-lg shadow-[rgba(0,0,0,0.25)] cursor-pointer z-[1]" + " " + className}
+            data-test="weather-card"
             onClick={toggleModal}
             initial={{scale: 1}}
             whileHover={{scale: [1.1, 1]}}

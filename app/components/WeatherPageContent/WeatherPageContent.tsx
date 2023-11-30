@@ -31,7 +31,7 @@ const WeatherPageContent = () => {
     }
 
     return (
-        <div className="relative w-auto h-screen overflow-y-scroll overflow-hidden lg:snap-y lg:snap-mandatory">
+        <div className="relative w-auto h-screen overflow-y-scroll overflow-hidden lg:snap-y lg:snap-mandatory" data-test="weather-content">
             <div className="h-screen w-full flex flex-col items-center justify-center overflow-hidden snap-center">
                 <div className="h-[50%] flex flex-col justify-end text-center text-[28px] min-[768px]:text-4xl min-[1024px]:text-5xl font-black uppercase text-slate-200">
                     <p>
@@ -65,6 +65,7 @@ const WeatherPageContent = () => {
                     </p>
                     <motion.p
                         className={"m-[-8px] min-[768px]:m-0 min-[1024px]:mt-2 " + (weeklyWeather ? getWeatherColor(weeklyWeather[0].weatherCode) : "text-white")}
+                        data-test="weather-text"
                         initial={{ scale: 0.9, opacity: 0, y: 48 }}
                         whileInView={{ scale: 1, opacity: 1, y: 0 }}
                         transition={{ delay: 1.1, ease: "backInOut", type: "spring" }}
@@ -75,6 +76,7 @@ const WeatherPageContent = () => {
                 </div>
                 {weeklyWeather && (
                     <motion.div
+                        data-test="landing-weather-card"
                         initial={{ scale: 1, opacity: 0, y: 32 }}
                         whileInView={{ scale: 1, opacity: 1, y: 0 }}
                         transition={{ delay: 1.3, ease: "backInOut", type: "spring" }}
@@ -91,6 +93,7 @@ const WeatherPageContent = () => {
                     viewport={{once: true}}
                 >
                     <motion.button
+                        data-test="weekly-weather-button"
                         onClick={viewWeeklyWeather}
                         className="text-slate-200 p-3 text-lg font-bold flex flex-col justify-center items-center uppercase relative top-12"
                         initial={{opacity: 0.5}}
