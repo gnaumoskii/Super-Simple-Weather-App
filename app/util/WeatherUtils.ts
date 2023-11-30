@@ -51,10 +51,10 @@ export const getWeatherColor = (weatherCode: number) => {
     return "text-slate-700"
   } else
   if(weatherCodeDescription.toLowerCase() === "cloudy" || weatherCodeDescription.toLowerCase() === "slightly cloudy") {
-    return "text-gray-300"
+    return "text-gray-400"
   } else
   if(weatherCodeDescription.toLowerCase() === "snowy" || weatherCodeDescription.toLowerCase() === "very snowy" || weatherCodeDescription.toLowerCase() === "slightly snowy") {
-    return "text-slate-200"
+    return "text-sky-300"
   } else
   if(weatherCodeDescription.toLowerCase() === "extremely snowy") {
     return "text-slate-300"

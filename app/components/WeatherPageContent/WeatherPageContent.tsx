@@ -20,6 +20,8 @@ const WeatherPageContent = () => {
     const {
         data: weeklyWeather,
         isLoading,
+        isError,
+        error
     } = useQuery({
         queryKey: ["fetchWeather"],
         queryFn: () => fetchWeather(),
@@ -28,6 +30,30 @@ const WeatherPageContent = () => {
 
     if (isLoading) {
         return <LoadingSpinner />;
+    }
+
+    if(isError) {
+        if('code' in error) {
+            return (
+                <motion.div className="h-[100dvh] flex justify-center items-center text-center text-lg lg:text-2xl font-black uppercase text-slate-200"
+                initial={{ scale: 0.9, opacity: 0, y: -16 }}
+                whileInView={{ scale: 1, opacity: 1, y: 0 }}
+                transition={{ease: "backInOut", type: "spring" }}
+                >
+                    <p className="max-w-[600px] p-4">Please <span className="text-slate-400">allow location access</span> to receive accurate weather updates for your area.</p>
+                </motion.div>
+            )
+        }
+
+        return (
+            <motion.div className="h-[100dvh] flex justify-center items-center text-center text-lg lg:text-2xl font-black uppercase text-slate-200"
+            initial={{ scale: 0.9, opacity: 0, y: -16 }}
+            whileInView={{ scale: 1, opacity: 1, y: 0 }}
+            transition={{ease: "backInOut", type: "spring" }}
+            >
+                <p className="max-w-[600px] lg:max-w-[720px] p-4">Unknown error occured.<br/>Please <span className="text-slate-400">refresh the page</span> or <span className="text-slate-400">come back later.</span></p>
+            </motion.div>
+        )
     }
 
     return (
