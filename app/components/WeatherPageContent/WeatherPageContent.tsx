@@ -32,7 +32,7 @@ const WeatherPageContent = () => {
 
     return (
         <div className="relative w-auto h-screen overflow-y-scroll overflow-hidden lg:snap-y lg:snap-mandatory" data-test="weather-content">
-            <div className="h-screen w-full flex flex-col items-center justify-center overflow-hidden snap-center">
+            <div className="h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden snap-center">
                 <div className="h-[50%] flex flex-col justify-end text-center text-[28px] min-[768px]:text-4xl min-[1024px]:text-5xl font-black uppercase text-slate-200">
                     <p>
                     <motion.span
@@ -109,7 +109,7 @@ const WeatherPageContent = () => {
                     </motion.button>
                 </motion.div>
             </div>
-            <div ref={weatherGroupRef} className="mt-24 pt-14 w-full h-screen flex justify-center items-center snap-start">
+            <div ref={weatherGroupRef} className="mt-24 pt-14 w-full h-[100dvh] flex justify-center items-center snap-start">
                 {weeklyWeather && <WeatherGroup weeklyWeather={weeklyWeather} />}
             </div>
         </div>

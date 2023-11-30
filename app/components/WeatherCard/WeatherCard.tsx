@@ -30,16 +30,16 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ weather, className }) => {
             <WeatherIcon className="scale-[150%] mr-2" weatherCode={weather.weatherCode} />
             <div className="border-l-[1px] border-white flex justify-between items-center w-full">
                 <div className="flex flex-col justify-center w-full pl-3">
-                    <p className="w-16 min-[768px]:w-auto font-light uppercase font-montsrrat text-sm tracking-widest">
-                    {weather.date.toLocaleDateString("default", {weekday: "short"})} <span className="hidden min-[768px]:inline">|</span> {weather.date.toLocaleDateString("default", { month: "short", day: "numeric" }).toUpperCase()} 
+                    <p className="w-14 md:w-auto font-light uppercase font-montsrrat text-xs sm:text-sm tracking-widest">
+                    {weather.date.toLocaleDateString("default", {weekday: "short"})} <span className="hidden md:inline">|</span> {weather.date.toLocaleDateString("default", { month: "short", day: "numeric" }).toUpperCase()} 
                     </p>
-                    <p className="font-bold text-lg">
+                    <p className="font-bold text-md sm:text-lg">
                         {weather.temperatureMax.toFixed(1)}<span className="font-sans">&#8451;</span> / {weather.temperatureMin.toFixed(1)}<span className="font-sans">&#8451;</span>
                     </p>
                 </div>
                 <div className="w-full">
                      <p className="font-light uppercase font-montsrrat text-xs tracking-widest text-center">Weather</p>
-                     <p className={"text-sm font-extrabold uppercase text-center " + getWeatherColor(weather.weatherCode)}>{mapWeatherCode(weather.weatherCode)}</p>
+                     <p className={"text-xs sm:text-sm font-bold sm:font-extrabold uppercase text-center " + getWeatherColor(weather.weatherCode)}>{mapWeatherCode(weather.weatherCode)}</p>
                 </div>
                 
             </div>
