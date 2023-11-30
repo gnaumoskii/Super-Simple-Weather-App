@@ -66,7 +66,7 @@ export const getWeatherColor = (weatherCode: number) => {
     return "text-gray-300"
   } else
   if(weatherCodeDescription.toLowerCase() === "thunderstorm" || weatherCodeDescription.toLowerCase() === "thunderstorm with hail" || weatherCodeDescription.toLowerCase() === "thunderstorm with heavy hail") {
-    return "text-red-800"
+    return "text-red-700"
   }
   return "text-white";
 }
@@ -103,7 +103,6 @@ export const convertWeatherData = (weatherData: WeatherRawData, hourlyData: Weat
       hourlyStartOffset+=24;
       hourlyEndOffset+=24;
     }
-    console.log(weeklyWeather[0])
     return weeklyWeather;
 }
 

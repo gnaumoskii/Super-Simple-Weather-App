@@ -27,8 +27,8 @@ const WeatherHourCard: React.FC<WeatherHourCardProps> = ({ hourlyWeather }) => {
         >
             <WeatherIcon className="scale-100 h-full w-[60px]" weatherCode={hourlyWeather.weatherCode} isNight={isNightTime} />
             <div className="flex items-center mt-1 border-l-[1px] border-white w-full">
-                <div className="w-1/2 flex">
-                    <p className="w-[50%] pl-3 text-lg font-bold break-words" data-test="weather-hourly-card__time">
+                <div className="w-1/2 flex flex-col sm:flex-row">
+                    <p className="w-[100%] sm:w-[50%] pl-3 text-lg font-bold break-words" data-test="weather-hourly-card__time">
                         {new Date(hourlyWeather.time).toLocaleTimeString("default", { hour: "2-digit", minute: "2-digit" })}
                     </p>
                     <p className="ml-4 text-lg font-bold break-words" data-test="weather-hourly-card__temperature">
@@ -51,15 +51,15 @@ const WeatherHourCard: React.FC<WeatherHourCardProps> = ({ hourlyWeather }) => {
 
 const WeatherDetails = ({ weather }: WeatherDetailsProps) => {
     return (
-        <div data-test="weather-details">
-            <h1 className="mt-6 text-center text-white capitalize text-3xl font-semibold">Weather details</h1>
+        <div className="w-full h-full max-w-[560px] sm:h-fit" data-test="weather-details">
+            <h1 className="mt-12 sm:mt-6 text-center text-white capitalize text-3xl font-semibold">Weather details</h1>
             <div className="mt-12"
             >
                 <p className="uppercase font-light text-lg text-slate-400">DATE</p>
                 <motion.p className="font-bold text-xl text-white"
-                  initial={{x: -3, opacity: 0}}
+                  initial={{x: -13, opacity: 0}}
                   animate={{x: 0, opacity: 1}}
-                  transition={{type:"spring", ease:"backInOut", delay: 0}}
+                  transition={{type:"spring", ease:"backInOut", delay: 0.05}}
                   data-test="weather-details__date"
                 >
                     {weather.date.toLocaleDateString("default", { weekday: "long" })} -{" "}
@@ -69,9 +69,9 @@ const WeatherDetails = ({ weather }: WeatherDetailsProps) => {
             <div className="mt-6">
                 <p className="uppercase font-light text-lg text-slate-400">TEMPERATURES (MAX / MIN)</p>
                 <motion.p className="font-bold text-xl text-white"
-                  initial={{x: -3, opacity: 0}}
+                  initial={{x: -13, opacity: 0}}
                   animate={{x: 0, opacity: 1}}
-                  transition={{type:"spring", ease:"backInOut", delay: 0}}
+                  transition={{type:"spring", ease:"backInOut", delay: 0.05}}
                   data-test="weather-details__temperatures"
                 >
                     {weather.temperatureMax.toFixed(1)}
@@ -83,9 +83,9 @@ const WeatherDetails = ({ weather }: WeatherDetailsProps) => {
                 <div className="">
                     <p className="uppercase font-light text-lg text-slate-400">SUNRISE</p>
                     <motion.p className="font-bold text-xl text-white"
-                      initial={{x: -3, opacity: 0}}
+                      initial={{x: -13, opacity: 0}}
                       animate={{x: 0, opacity: 1}}
-                      transition={{type:"spring", ease:"backInOut", delay: 0}}
+                      transition={{type:"spring", ease:"backInOut", delay: 0.05}}
                       data-test="weather-details__sunrise"
                     >
                         {new Date(weather.sunrise).toLocaleTimeString("default", { hour: "2-digit", minute: "2-digit" })}
@@ -94,9 +94,9 @@ const WeatherDetails = ({ weather }: WeatherDetailsProps) => {
                 <div className="ml-12">
                     <p className="uppercase font-light text-lg text-slate-400">SUNSET</p>
                     <motion.p className="font-bold text-xl text-white"
-                      initial={{x: -3, opacity: 0}}
+                      initial={{x: -13, opacity: 0}}
                       animate={{x: 0, opacity: 1}}
-                      transition={{type:"spring", ease:"backInOut", delay: 0}}
+                      transition={{type:"spring", ease:"backInOut", delay: 0.05}}
                       data-test="weather-details__sunset"
                     >
                         {new Date(weather.sunset).toLocaleTimeString("default", { hour: "2-digit", minute: "2-digit" })}
@@ -105,7 +105,7 @@ const WeatherDetails = ({ weather }: WeatherDetailsProps) => {
             </div>
             <div className="mt-6">
                 <p className="uppercase font-light text-lg text-slate-400">HOURLY WEATHER</p>
-                <motion.ul className="mt-2 max-h-[352px] overflow-y-auto text-white bg-slate-900 bg-opacity-70 rounded-l-2xl"
+                <motion.ul className="mt-2 h-[50%] max-h-[352px] overflow-y-auto text-white bg-slate-900 bg-opacity-70 rounded-l-2xl"
                   transition={{delay: 0.5}}
                 >
                     {weather.hourly.map((hourlyWeather) => (

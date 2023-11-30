@@ -28,8 +28,8 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ weather, className }) => {
     return (
         <>
         <motion.div 
+            className={"relative bg-[#161f33] p-4 w-[360px] md:w-400 rounded-3xl flex items-center text-white shadow-lg shadow-[rgba(0,0,0,0.25)] cursor-pointer z-[1]" + " " + className}
             data-test="weather-card"
-            className={"relative bg-[#161f33] p-4 w-400 rounded-3xl flex items-center text-white shadow-lg shadow-[rgba(0,0,0,0.25)] cursor-pointer z-[1]" + " " + className}
             onClick={toggleModal}
             initial={{scale: 1}}
             whileHover={{scale: [1.1, 1]}}
@@ -38,8 +38,8 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ weather, className }) => {
             <WeatherIcon className="scale-[150%] mr-2" weatherCode={weather.weatherCode} />
             <div className="border-l-[1px] border-white flex justify-between items-center w-full">
                 <div className="flex flex-col justify-center w-full pl-3">
-                    <p className="font-light uppercase font-montsrrat text-sm tracking-widest">
-                    {weather.date.toLocaleDateString("default", {weekday: "short"})} | {weather.date.toLocaleDateString("default", { month: "short", day: "numeric" }).toUpperCase()} 
+                    <p className="w-16 min-[768px]:w-auto font-light uppercase font-montsrrat text-sm tracking-widest">
+                    {weather.date.toLocaleDateString("default", {weekday: "short"})} <span className="hidden min-[768px]:inline">|</span> {weather.date.toLocaleDateString("default", { month: "short", day: "numeric" }).toUpperCase()} 
                     </p>
                     <p className="font-bold text-lg">
                         {weather.temperatureMax.toFixed(1)}<span className="font-sans">&#8451;</span> / {weather.temperatureMin.toFixed(1)}<span className="font-sans">&#8451;</span>
