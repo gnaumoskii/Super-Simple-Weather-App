@@ -11,7 +11,10 @@ export const fetchWeather = async (): Promise<Weather[]> => {
       const hourlyWeatherData: WeatherHourlyRawData = data.hourly;
       return convertWeatherData(weeklyWeatherData, hourlyWeatherData);
 
-    } catch (error) {
+    } catch (error: any) {
+      if('code' in error && 'message' in error) {
+        throw {message: error.message, code: error.code};
+      }
       throw new Error('Error fetching data: ' + error);
     }
 }
