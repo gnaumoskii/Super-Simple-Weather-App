@@ -1,7 +1,7 @@
 import { Weather } from "@/app/types/WeatherTypes";
 import React, { useRef } from "react";
 import WeatherCard from "../WeatherCard/WeatherCard";
-import { motion, useAnimate, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 type WeatherGroupProps = {
     weeklyWeather: Weather[];
@@ -14,9 +14,8 @@ const fadeAnimationVariants = {
 
 };
 
-const WeatherGroup = ({ weeklyWeather }: WeatherGroupProps) => {
+const WeatherGroup: React.FC<WeatherGroupProps> = ({ weeklyWeather }) => {
     const weatherCardRef = useRef(null);
-    const [scope, animate] = useAnimate();
     const inView = useInView(weatherCardRef, { once: true });
     return (
         <div className="relative">
@@ -30,7 +29,7 @@ const WeatherGroup = ({ weeklyWeather }: WeatherGroupProps) => {
             </motion.p>
             <div className="mt-10">
                 <motion.div
-                    className="w-[2px] bg-slate-500 h-[calc(100%-86px)] absolute top-10 left-[50%] origin-top"
+                    className="w-[2px] bg-slate-500 h-[calc(100%-86px)] absolute top-10 left-[50%] origin-top hidden lg:block"
                     initial={{ scaleY: 0 }}
                     animate={inView ? { scaleY: 1 } : { scaleY: 0 }}
                     transition={{ type: "spring", delay: 1 }}
@@ -42,12 +41,12 @@ const WeatherGroup = ({ weeklyWeather }: WeatherGroupProps) => {
                         animate={inView ? { scale: 1, translateX: '-50%' } : { scale: 0 }}
                         transition={{ ease: "backInOut", type:"spring", delay: 0}}
                 ></motion.div>
-                <ul className="w-[856px] flex flex-wrap justify-start items-end">
+                <ul className="w-[856px] flex flex-col items-center lg:flex-row lg:flex-wrap lg:justify-start lg:items-end">
                     {weeklyWeather.map((dailyWeather, index) => {
                         let isEven = index % 2 == 0;
                         return (
                             <motion.li
-                                className={"relative mx-[14px] origin-right" + (isEven && index !== 6 ? " mb-[104px]" : "")}
+                                className={"relative mx-[14px] origin-right mb-4 " + (isEven && index !== 6 ? "lg:mb-[104px]" : "")}
                                 key={dailyWeather.id}
                                 ref={weatherCardRef}
                                 variants={fadeAnimationVariants}
@@ -57,7 +56,7 @@ const WeatherGroup = ({ weeklyWeather }: WeatherGroupProps) => {
                                 viewport={{ once: true }}
                             >
                                 <motion.div
-                                    className={" bg-slate-500 h-[2px] w-[14px] absolute top-[50%] translate-y-[50%] " + (isEven ? "right-[-14px] origin-left" : "left-[-14px] origin-right")}
+                                    className={" bg-slate-500 h-[2px] w-[14px] absolute top-[50%] translate-y-[50%] hidden lg:block " + (isEven ? "right-[-14px] origin-left" : "left-[-14px] origin-right")}
                                     initial={{scale: 0}}
                                     animate={inView ? { scale: 1 } : { scale: 0 }}
                                     transition={{ ease: "backInOut", delay: 1.5, type: "spring" }}

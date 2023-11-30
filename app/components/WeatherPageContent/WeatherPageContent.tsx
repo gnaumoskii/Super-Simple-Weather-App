@@ -15,7 +15,7 @@ const WeatherPageContent = () => {
     const fetchCooldown = secondsLeftUntilNextDay();
     const [scope, animate] = useAnimate();
     const viewWeeklyWeather = () => {
-        weatherGroupRef.current?.scrollIntoView({ behavior: "smooth" });
+        weatherGroupRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
     const {
         data: weeklyWeather,
@@ -31,9 +31,9 @@ const WeatherPageContent = () => {
     }
 
     return (
-        <div className="relative w-auto h-screen overflow-y-scroll overflow-hidden snap-y snap-mandatory">
+        <div className="relative w-auto h-screen overflow-y-scroll overflow-hidden lg:snap-y lg:snap-mandatory">
             <div className="h-screen w-full flex flex-col items-center justify-center overflow-hidden snap-center">
-                <div className="text-center text-5xl font-black uppercase text-slate-200 mt-60">
+                <div className="h-[50%] flex flex-col justify-end text-center text-[28px] min-[768px]:text-4xl min-[1024px]:text-5xl font-black uppercase text-slate-200">
                     <p>
                     <motion.span
                         className="inline-block"
@@ -60,11 +60,11 @@ const WeatherPageContent = () => {
                         transition={{ delay: 0.65, ease: "easeOut", type: "spring" }}
                         viewport={{ once: true }}
                     >
-                        is&nbsp;
+                        is
                     </motion.span>
                     </p>
                     <motion.p
-                        className={"mt-2 " + (weeklyWeather ? getWeatherColor(weeklyWeather[0].weatherCode) : "text-white")}
+                        className={"m-[-8px] min-[768px]:m-0 min-[1024px]:mt-2 " + (weeklyWeather ? getWeatherColor(weeklyWeather[0].weatherCode) : "text-white")}
                         initial={{ scale: 0.9, opacity: 0, y: 48 }}
                         whileInView={{ scale: 1, opacity: 1, y: 0 }}
                         transition={{ delay: 1.1, ease: "backInOut", type: "spring" }}
@@ -80,10 +80,11 @@ const WeatherPageContent = () => {
                         transition={{ delay: 1.3, ease: "backInOut", type: "spring" }}
                         viewport={{ once: true }}
                     >
-                        <WeatherCard className="mt-20" weather={weeklyWeather[0]} />
+                        <WeatherCard className="m-12 min-[1024px]:mt-16" weather={weeklyWeather[0]} />
                     </motion.div>
                 )}
                 <motion.div
+                    className="mt-auto mb-28"
                     initial={{ scale: 0.8, opacity: 0, y: 16 }}
                     whileInView={{ scale: 1, opacity: 1, y: 0 }}
                     transition={{ delay: 1.5, ease: "backInOut", type: "spring" }}
@@ -91,7 +92,7 @@ const WeatherPageContent = () => {
                 >
                     <motion.button
                         onClick={viewWeeklyWeather}
-                        className="text-slate-200 p-3 mt-32 text-lg font-bold flex flex-col justify-center items-center uppercase relative top-12"
+                        className="text-slate-200 p-3 text-lg font-bold flex flex-col justify-center items-center uppercase relative top-12"
                         initial={{opacity: 0.5}}
                         whileHover={{ scale: 1.15, opacity: 1 }}
                         transition={{ ease: "backInOut", type: "spring" }}
@@ -105,7 +106,7 @@ const WeatherPageContent = () => {
                     </motion.button>
                 </motion.div>
             </div>
-            <div ref={weatherGroupRef} className="mt-24 pt-14 w-full h-screen flex justify-center items-center snap-center">
+            <div ref={weatherGroupRef} className="mt-24 pt-14 w-full h-screen flex justify-center items-center snap-start">
                 {weeklyWeather && <WeatherGroup weeklyWeather={weeklyWeather} />}
             </div>
         </div>
