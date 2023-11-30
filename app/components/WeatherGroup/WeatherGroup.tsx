@@ -29,7 +29,7 @@ const WeatherGroup: React.FC<WeatherGroupProps> = ({ weeklyWeather }) => {
             </motion.p>
             <div className="mt-10">
                 <motion.div
-                    className="w-[2px] bg-slate-500 h-[calc(100%-86px)] absolute top-10 left-[50%] origin-top hidden lg:block"
+                    className="w-[2px] bg-slate-500 h-[calc(100%-102px)] absolute top-10 left-[50%] origin-top hidden lg:block"
                     initial={{ scaleY: 0 }}
                     animate={inView ? { scaleY: 1 } : { scaleY: 0 }}
                     transition={{ type: "spring", delay: 1 }}
