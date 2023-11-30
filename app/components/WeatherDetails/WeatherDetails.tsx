@@ -27,7 +27,7 @@ const WeatherHourCard: React.FC<WeatherHourCardProps> = ({ hourlyWeather }) => {
         >
             <WeatherIcon className="scale-100 h-full w-[60px]" weatherCode={hourlyWeather.weatherCode} isNight={isNightTime} />
             <div className="flex items-center mt-1 border-l-[1px] border-white w-full">
-                <div className="w-1/2 flex flex-col sm:flex-row">
+                <div className="w-1/2 flex flex-col min-[475px]:flex-row">
                     <p className="w-[100%] sm:w-[50%] pl-3 text-lg font-bold break-words" data-test="weather-hourly-card__time">
                         {new Date(hourlyWeather.time).toLocaleTimeString("default", { hour: "2-digit", minute: "2-digit" })}
                     </p>
@@ -105,7 +105,7 @@ const WeatherDetails = ({ weather }: WeatherDetailsProps) => {
             </div>
             <div className="mt-6">
                 <p className="uppercase font-light text-lg text-slate-400">HOURLY WEATHER</p>
-                <motion.ul className="mt-2 h-[50%] max-h-[352px] overflow-y-auto text-white bg-slate-900 bg-opacity-70 rounded-l-2xl"
+                <motion.ul className="mt-2 h-[50%] sm:max-h-[352px] overflow-y-auto text-white bg-slate-900 bg-opacity-70 rounded-l-2xl"
                   transition={{delay: 0.5}}
                 >
                     {weather.hourly.map((hourlyWeather) => (
