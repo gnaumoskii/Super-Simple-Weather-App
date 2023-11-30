@@ -30,7 +30,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ weather, className }) => {
             <WeatherIcon className="scale-[150%] mr-2" weatherCode={weather.weatherCode} />
             <div className="border-l-[1px] border-white flex justify-between items-center w-full">
                 <div className="flex flex-col justify-center w-full pl-3">
-                    <p className="w-14 md:w-auto font-light uppercase font-montsrrat text-xs sm:text-sm tracking-widest">
+                    <p className="w-14 min-[475px]:w-16 md:w-auto font-light uppercase font-montsrrat text-xs sm:text-sm tracking-widest">
                     {weather.date.toLocaleDateString("default", {weekday: "short"})} <span className="hidden md:inline">|</span> {weather.date.toLocaleDateString("default", { month: "short", day: "numeric" }).toUpperCase()} 
                     </p>
                     <p className="font-bold text-md sm:text-lg">
