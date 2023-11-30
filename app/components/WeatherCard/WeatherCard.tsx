@@ -1,6 +1,5 @@
 import { Weather } from "@/app/types/WeatherTypes";
 import React, { useState } from "react";
-import { createPortal } from "react-dom";
 import WeatherIcon from "../WeatherIcon/WeatherIcon";
 import { getWeatherColor, mapWeatherCode } from "@/app/util/WeatherUtils";
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
@@ -10,13 +9,6 @@ import { motion, useAnimate } from "framer-motion";
 type WeatherCardProps = {
     weather: Weather;
     className?: string;
-};
-
-const fadeAnimationVariants = {
-    hiddenLeft: { opacity: 0, x: 264, scale: 0.8 },
-    hiddenRight: { opacity: 0, x: -264, scale: 0.8 },
-    fadeToCenter: { opacity: 1, x: 0, scale: 1 },
-
 };
 
 const WeatherCard: React.FC<WeatherCardProps> = ({ weather, className }) => {
