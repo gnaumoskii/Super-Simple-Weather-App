@@ -8,9 +8,9 @@ type WeatherGroupProps = {
 };
 
 const fadeAnimationVariants = {
-    hiddenLeft: { opacity: 0, x: 264, scale: 0.8 },
-    hiddenRight: { opacity: 0, x: -264, scale: 0.8 },
-    fadeToCenter: { opacity: 1, x: 0, scale: 1 },
+    hiddenLeft: { opacity: 0, x: 264 },
+    hiddenRight: { opacity: 0, x: -264 },
+    fadeToCenter: { opacity: 1, x: 0 },
 
 };
 

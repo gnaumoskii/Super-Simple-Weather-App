@@ -23,7 +23,7 @@ const WeatherHourCard: React.FC<WeatherHourCardProps> = ({ hourlyWeather }) => {
         <motion.li data-test="weather-hourly-card" className="flex justify-start items-center bg-slate-800 m-4 rounded-2xl p-1"
           initial={{x: -30, opacity: 0}}
           animate={{x: 0, opacity: 1}}
-          transition={{type:"spring", ease:"backInOut", delay: 0.15 * hourlyWeather.id}}
+          transition={{type:"spring", ease:"backInOut", delay: 0.05 * hourlyWeather.id}}
         >
             <WeatherIcon className="scale-100 h-full w-[60px]" weatherCode={hourlyWeather.weatherCode} isNight={isNightTime} />
             <div className="flex items-center mt-1 border-l-[1px] border-white w-full">
